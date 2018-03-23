@@ -13,4 +13,4 @@ Run the production app with:
 
 Run the tests with:
 
-`docker-compose -f docker-compose.yml -f docker-compose-prod.yml -f docker-compose-test.yml run tests`
+`docker-compose -f docker-compose.yml -f docker-compose-prod.yml -f docker-compose-test.yml run e2e`
