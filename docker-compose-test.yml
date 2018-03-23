@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  e2e:
+    build: ./my-awesome-integration-tests
+    command : cucumber
+    volumes:
+      - ./my-awesome-integration-tests/tmp:/app/tmp
+    environment:
+      ROOT_URL: http://nginx
+    privileged: true
+    depends_on:
+      - nginx

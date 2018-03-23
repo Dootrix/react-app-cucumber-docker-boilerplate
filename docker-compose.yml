@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - '8080:80'
+    links:
+      - web:web
+      - api:api
+
+  web:
+    build: ./my-awesome-app
+    command: yarn start
+    ports:
+      - '3000:3000'
+    working_dir: /app
+    volumes:
+      - ./my-awesome-app:/app
+    depends_on:
+      - api
+
+  api:
+    build: ./my-awesome-api
+    command: rackup --host 0.0.0.0 -p 3000
+    volumes:
+      - ./my-awesome-api:/app
+    ports:
+      - '3001:3000'
